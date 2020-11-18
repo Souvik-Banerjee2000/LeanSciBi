@@ -3,13 +3,13 @@ import Chart from "react-google-charts";
 import PivotChart from "./PivotChart";
 // <PivotChart pivotRow={pivotData[keyIndex]} />
 function OneLayerChart({totalChartData,colorArray,titles,footers,pivotData}) {
-    function fixWidthHeight(index){
+    function fixWidthHeight(index,rowData){
         if(index===0)
-            return '450px'
+            return `${rowData.length * 10}px`;
         else if(index===1)
-            return '450px' 
+            return `${rowData.length * 10}px`;
         else if(index===2)
-            return '680px'       
+            return `${rowData.length * 5}px`;    
     }
     function isCaptioned(index,name){
         if(index==0){
@@ -31,7 +31,7 @@ function OneLayerChart({totalChartData,colorArray,titles,footers,pivotData}) {
                             <div key={rowIndex}>
                                 <Chart
                                     width={'300px'}
-                                    height={fixWidthHeight(keyIndex)}
+                                    height={fixWidthHeight(keyIndex,rowData)}
                                     chartType="BarChart"
                                     loader={<p></p>}
                                     data={rowData}
